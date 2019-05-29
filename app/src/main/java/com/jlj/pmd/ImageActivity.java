@@ -81,7 +81,7 @@ public class ImageActivity extends AppCompatActivity {
         int width = metric.widthPixels;     // 屏幕宽度（像素）
         int height = metric.heightPixels;   // 屏幕高度（像素）
         view = LayoutInflater.from(this).inflate(R.layout.view_message_layout,null);
-        layoutView(view,width,height);
+        layoutView(view,width,height);//这个地方不用动
 
     }
 
@@ -95,8 +95,8 @@ public class ImageActivity extends AppCompatActivity {
     private void layoutView(View v, int width, int height) {
         // 整个View的大小 参数是左上角 和右下角的坐标
         v.layout(0, 0, width, height);
-        int measuredWidth = View.MeasureSpec.makeMeasureSpec(width-160, View.MeasureSpec.EXACTLY);
-        int measuredHeight = View.MeasureSpec.makeMeasureSpec(240, View.MeasureSpec.EXACTLY);
+        int measuredWidth = View.MeasureSpec.makeMeasureSpec(DisplayUtil.dip2px(this,240), View.MeasureSpec.EXACTLY);//宽 直接width 是一整个横屏 具体多宽慢慢算 160这个值好像不是dp 所以往大了设
+        int measuredHeight = View.MeasureSpec.makeMeasureSpec(DisplayUtil.dip2px(this,80), View.MeasureSpec.EXACTLY);//高  同理
         /** 当然，measure完后，并不会实际改变View的尺寸，需要调用View.layout方法去进行布局。
          * 按示例调用layout函数后，View的大小将会变成你想要设置成的大小。
          */
@@ -157,7 +157,7 @@ public class ImageActivity extends AppCompatActivity {
         Bitmap bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bmp);
 
-        c.drawColor(Color.GRAY );
+        c.drawColor(Color.GRAY );//这个地方设置颜色，随便你
         /** 如果不设置canvas画布为白色，则生成透明 */
 
         v.layout(0, 0, w, h);
