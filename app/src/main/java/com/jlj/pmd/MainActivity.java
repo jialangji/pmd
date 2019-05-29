@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mVstv = (com.jlj.pmd.news.MarqueeView) findViewById(R.id.mv);
+        mVstv = findViewById(R.id.mv);
     }
 
 }
